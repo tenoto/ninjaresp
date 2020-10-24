@@ -6,26 +6,20 @@ https://github.com/tenoto/ninjaresp.git
 
 - ninja_2gmc_whole_191224.rmf (default response)
     - sum of 2 GMCs, 'INSTRUME' keyword is reset to '2GMC'
-    - sum of the inner and outer pads (whole)
+    - sum of the inner and outer readout pads (whole)
     - thickness of the sensitive volume 1.62 cm (see cubesat:00165), which should be 1.545 cm at the latest design of the EM model
     - scirpts to make these files are also included.
-	- Be window included
-	- aperture fraction 69% (measured at the EM model, note. 73.5% for ideal)
-	- aperture fraction 71% (Be window supporting entrance window)
+	- absorption by the Be window is included
+	- aperture fraction 69% is included (measured at the EM model, note. 73.5% for ideal)
+	- aperture fraction 71% is included (Be window supporting entrance window)
+	- Original response files (see cubesat:00165):
+	    - [CubeSatGasDetWhole.rmf](https://riken-share.box.com/shared/static/0udo2hmm91tap2qiulgsc8gx2jganpwv.rmf): whole = inner + outer (cubesat:00165)
+	    - [CubeSatGasDetInner.rmf](https://riken-share.box.com/shared/static/ovrk6q48l7ktkp6p97gkrqxpe49r6zzh.rmf): inner pad only, created (cubesat:00165), appling the anti-coincidence for events with >1 keV at the outer pad
 
-	- Original response files (see cubesat:00165)
-		- Whole = inner + outer: [CubeSatGasDetWhole.rmf](https://drive.google.com/file/d/1iXHol6E_iB3P1Phf9_E1su3adgNbpioM/view)
-		- Inner pad only: [CubeSatGasDetInner.rmf](https://drive.google.com/file/d/1BoACrQcTa6zcoUwQ5XZF9JyjBJExPWGw/view)
-
-- Related files:
-    - [CubeSatGasDetWhole.rmf](https://riken-share.box.com/shared/static/0udo2hmm91tap2qiulgsc8gx2jganpwv.rmf): created by Kitaguchi (cubesat:00165)
-    - [CubeSatGasDetInner.rmf](https://riken-share.box.com/shared/static/ovrk6q48l7ktkp6p97gkrqxpe49r6zzh.rmf): created by Kitaguchi (cubesat:00165), appling the anti-coincidence for events with >1 keV at the outer pad
-
-- ninja_1gmc_whole_simcxb_200624.pi: 
+- ninja_2gmc_whole_simcxb_200624.pi: 
 	- simulated CXB spectrum
-	- ninjasat:00939 (Kitaguchi)
-	- original file SimCXB_200624.pi was renamed 
-	- 'INSTRUME' keyword is reset to '1GMC'
+	- ninjasat:00939 as the original file SimCXB_200624.pi (renamed)
+	- 'INSTRUME' keyword is reset to '2GMC', and count is doubled for 2 GMCs.
 	- Earth occultation considered
 	- EO fraction: 0.65566 = 1.0 - cos(asin(6371/(6371+415)))
 	- Inner and outer electrodes used
@@ -35,14 +29,13 @@ https://github.com/tenoto/ninjaresp.git
 	- Electrical noise = 0.1 keV in sigma
 
 - ninja_2gmc_whole_nxbcxb_200928:
-	- normalized NXB spectrum from MAXI
-    - ninjasat:01358 (Iwakiri)
-    - original file ninja_simnxb_200928.csv
+	- assumed NXB spectrum just normalized from MAXI
+	- CXB contribution is excluded.
+    - (ninjasat:01358) the original file ninja_simnxb_200928.csv
 
 - ninja_empty.pi
- 	- empty pha file for Xspec fake
+ 	- empty pha file for Xspec fake, created
  	- original file name "empty.pi"
-
 
 - References (link to the internal-only webpage)
     - [Be window attenuation](https://astro.riken.jp/gwxwiki/lib/exe/fetch.php?media=transmission_be_20200711.pdf)
