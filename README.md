@@ -5,6 +5,7 @@ https://github.com/tenoto/ninjaresp.git
 # Latest response files (v201024)
 
 - all the files are stored in v201024/ninjaresp_201024/
+	- usage: git clone https://github.com/tenoto/ninjaresp.git
 	- ninja_?gmc_whole/inner_xxxxx_200928
 		- ? = 1 or 2 
 		- whole or inner 
