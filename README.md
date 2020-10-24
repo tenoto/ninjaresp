@@ -1,5 +1,7 @@
 # NinjaSat GMC Response (ninjaresp)
 
+![NinjaSat Emblem](https://github.com/tenoto/repository/blob/master/ninjasat/emblem/png/ninjasat_emblem-400px.png)
+
 # Latest response files (v201024)
 
 - Original response files
@@ -29,3 +31,7 @@ see (cubesat:00165)
 
 xcm/crab_nebula.xcm           xcm/scox1_NB1_spec_mo.xcm
 xcm/crab_xmm_fixed_model.xcm
+
+# Change history
+
+2020-10-24: First upload (T.Enoto)
