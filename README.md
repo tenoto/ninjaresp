@@ -16,7 +16,11 @@ https://github.com/tenoto/ninjaresp.git
 	    - [CubeSatGasDetWhole.rmf](https://riken-share.box.com/shared/static/0udo2hmm91tap2qiulgsc8gx2jganpwv.rmf): whole = inner + outer (cubesat:00165)
 	    - [CubeSatGasDetInner.rmf](https://riken-share.box.com/shared/static/ovrk6q48l7ktkp6p97gkrqxpe49r6zzh.rmf): inner pad only, created (cubesat:00165), appling the anti-coincidence for events with >1 keV at the outer pad
 
-- ninja_2gmc_whole_simcxb_200624.pi: 
+- ninja_2gmc_whole_nxbcxb_200928.pi
+	- used as the default backgroudn file 
+	- ninja_2gmc_whole_simcxb_200624.pi + ninja_2gmc_whole_maxinxb_200928.pi
+
+- ninja_2gmc_whole_simcxb_200624.pi 
 	- simulated CXB spectrum
 	- ninjasat:00939 as the original file SimCXB_200624.pi (renamed)
 	- 'INSTRUME' keyword is reset to '2GMC', and count is doubled for 2 GMCs.
@@ -28,7 +32,7 @@ https://github.com/tenoto/ninjaresp.git
 	- Intrinsic detector FWHM = 20%/sqrt(E/[5.9 keV])
 	- Electrical noise = 0.1 keV in sigma
 
-- ninja_2gmc_whole_nxbcxb_200928:
+- ninja_2gmc_whole_maxinxb_200928.pi
 	- assumed NXB spectrum just normalized from MAXI
 	- CXB contribution is excluded.
     - (ninjasat:01358) the original file ninja_simnxb_200928.csv
