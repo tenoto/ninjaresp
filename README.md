@@ -52,7 +52,9 @@ https://github.com/tenoto/ninjaresp.git
     - [Be window attenuation](https://astro.riken.jp/gwxwiki/lib/exe/fetch.php?media=transmission_be_20200711.pdf)
     - [Effective area evaluation by Takeda and Sato](https://astro.riken.jp/gwxwiki/lib/exe/fetch.php?media=gmc_effective_area.pdf)
 
-- [CubeSatGasDet_wapr_2gmc_2case.pdf](https://riken-share.box.com/shared/static/0ty5p2aq5u9tpfc3ysas88wu3lcb99lg.pdf)
+- []()
+
+[effective area]()
 
 # Xspec XCM files 
 
