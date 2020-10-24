@@ -4,6 +4,12 @@ https://github.com/tenoto/ninjaresp.git
 
 # Latest response files (v201024)
 
+- all the files are stored in v201024/ninjaresp_201024/
+	- ninja_?gmc_whole/inner_xxxxx_200928
+		- ? = 1 or 2 
+		- whole or inner 
+		- xxxxx : file information 
+
 - ninja_2gmc_whole_191224.rmf (default response)
     - sum of 2 GMCs, 'INSTRUME' keyword is reset to '2GMC'
     - sum of the inner and outer readout pads (whole)
