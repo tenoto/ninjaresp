@@ -50,15 +50,16 @@ for file in pi_file_list:
 
 # Be window included
 # aperture fraction: 73.5% (collimator, ideal) 
+# aperture fraction: 69% (collimator, EM measured)
 # aperture fraction: 71% (Be window support windw)
-#- total: 0.52185
+#- total: 0.4899
 
 #	"ninjaresp_201024/ninja_1gmc_inner_woaperture_191224.rmf",
 #	"ninjaresp_201024/ninja_1gmc_whole_woaperture_191224.rmf"
 
 for padtype in ["whole","inner"]:
 	f = open('ninjaresp_201024/tmp/ninja_1gmc_%s_191224.list' % padtype,'w')
-	f.write('ninjaresp_201024/tmp/ninja_1gmc_%s_woaperture_191224.rmf 0.52185\n' % padtype)
+	f.write('ninjaresp_201024/tmp/ninja_1gmc_%s_woaperture_191224.rmf 0.4899\n' % padtype)
 	f.write('ninjaresp_201024/tmp/ninja_1gmc_%s_woaperture_191224.rmf 0.0\n' % padtype)
 	f.close()
 
@@ -73,8 +74,8 @@ EOF
 
 for padtype in ["whole","inner"]:
 	f = open('ninjaresp_201024/tmp/ninja_2gmc_%s_191224.list' % padtype,'w')
-	f.write('ninjaresp_201024/tmp/ninja_1gmc_%s_woaperture_191224.rmf 0.52185\n' % padtype)
-	f.write('ninjaresp_201024/tmp/ninja_1gmc_%s_woaperture_191224.rmf 0.52185\n' % padtype)
+	f.write('ninjaresp_201024/tmp/ninja_1gmc_%s_woaperture_191224.rmf 0.4899\n' % padtype)
+	f.write('ninjaresp_201024/tmp/ninja_1gmc_%s_woaperture_191224.rmf 0.4899\n' % padtype)
 	f.close()
 
 	cmd = """

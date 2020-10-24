@@ -136,7 +136,7 @@ data 3 ninjaresp_201024/ninja_2gmc_whole_simcxb_200624.pi
 resp 3 ninjaresp_201024/ninja_2gmc_whole_191224.rmf 
 cpd /xw
 setplot energy 
-@xcm/crab_nebula.xcm 
+@../xcm/crab_nebula.xcm 
 ipl ld
 @ninjaresp_201024/plot/ninja_2gmc_whole_crab_bgd.pco
 la t 
