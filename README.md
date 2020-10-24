@@ -52,7 +52,7 @@ https://github.com/tenoto/ninjaresp.git
     - [Be window attenuation](https://astro.riken.jp/gwxwiki/lib/exe/fetch.php?media=transmission_be_20200711.pdf)
     - [Effective area evaluation by Takeda and Sato](https://astro.riken.jp/gwxwiki/lib/exe/fetch.php?media=gmc_effective_area.pdf)
 
-- []()
+- [ninja_2gmc_whole_crab_bgd.png](https://raw.githubusercontent.com/tenoto/ninjaresp/main/v201024/ninjaresp_201024/plot/ninja_2gmc_whole_crab_bgd.png)
 
 [effective area]()
 
