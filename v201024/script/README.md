@@ -1,4 +1,4 @@
-# NinjaSat GMC Response (ninjaresp)
+# NinjaSat GMC Response
 
 # Latest response files (v201024)
 
@@ -24,8 +24,3 @@ Inner pad only: https://drive.google.com/file/d/1BoACrQcTa6zcoUwQ5XZF9JyjBJExPWG
 
 see (cubesat:00165) 
 
-
-# Xspec XCM files 
-
-xcm/crab_nebula.xcm           xcm/scox1_NB1_spec_mo.xcm
-xcm/crab_xmm_fixed_model.xcm
