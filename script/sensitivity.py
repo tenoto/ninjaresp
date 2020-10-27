@@ -4,11 +4,13 @@ import os
 import argparse
 import pandas as pd
 import numpy as np
+import astropy.io.fits as fits
 
 __author__ = 'Teruaki Enoto'
 __version__ = '0.01'
 
 # 1 Crab ~ 2.3e-8 erg/s/cm2 (2-10 keV)
+# 1 mCrab ~ 2.3e-11 erg/s/cm2 (2-10 keV)
 # 1 eV = 1.60e-12 erg
 # 1 keV = 1.60e-9 erg
 
@@ -32,7 +34,7 @@ sensivtivity calculation
 	parser.add_argument('--emax', type=float, required=True, 
 		help='energy max (keV)')		
 	parser.add_argument('--bkg', type=str, required=False, 
-		default='v201024/ninjaresp_201024/ninja_2gmc_whole_maxinxb_200928',
+		default='v201024/ninjaresp_201024/ninja_2gmc_whole_maxinxb_200928.pi',
 		help='background spectrum.')
 	parser.add_argument('--rmf', type=str, required=False, 
 		default='v201024/ninjaresp_201024/plot/ninja_2gmc_whole_191224_area.qdp',
@@ -61,7 +63,25 @@ def calc_sensitivity(bkg,rmf,exp,emin,emax):
 	Fmin_photonlimit_erg = Fmin_photonlimit * width_eband * average_keV * 1.60e-9
 	print("--------------")
 	print("Photon limit Fmin: %.3e photons/s/cm2/keV (%.1f-%.1f keV, %.3f ks)" % (Fmin_photonlimit,emin,emax,exp/1000))
-	print("Photon limit Fmin: %.3e erg/s/cm2" % (Fmin_photonlimit_erg))
+	print("                 : %.3e erg/s/cm2" % (Fmin_photonlimit_erg))
+	# Idesawa, Master thesis, Eq (A.10) 
+	print("--------------")
+
+	hdu_bkg = fits.open(bkg)
+	bkg_keV = hdu_bkg["SPECTRUM"].data["CHANNEL"] * 0.1+ 0.55
+	bkg_cnt = hdu_bkg["SPECTRUM"].data["COUNTS"]
+	flag_bkg = np.logical_and(bkg_keV >= emin , bkg_keV <= emax)
+	bkg_rate = float(np.sum(bkg_cnt[flag_bkg]))/float(hdu_bkg["SPECTRUM"].header["EXPOSURE"])
+	print("Background rate: %.3e" % bkg_rate)
+
+	# S/N = Ns / sqrt(Nb) = 3
+	# Aeff F T delE / sqrt(Rb T delE) = 3 
+	# F = 3 / Aeff / delE * sqrt(Rb / T) 
+	Fmin_bgdlimit = 3.0 / average_cm2 / width_eband * np.sqrt(bkg_rate / exp) 
+	Fmin_bgdlimit_erg = Fmin_bgdlimit * width_eband * average_keV * 1.60e-9
+	print("--------------")
+	print("Background limit Fmin: %.3e photons/s/cm2/keV (%.1f-%.1f keV, %.3f ks)" % (Fmin_bgdlimit,emin,emax,exp/1000))
+	print("                     : %.3e erg/s/cm2" % (Fmin_bgdlimit_erg))
 	# Idesawa, Master thesis, Eq (A.10) 
 	print("--------------")
 
