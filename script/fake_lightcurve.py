@@ -67,14 +67,14 @@ def plot_curve(mkffile,bin,xmin,xmax,ninja_rate):
 	yerr = module_err_series[flag_time]
 
 	outpdf = mkffile.replace('mkf.gz','pdf')
-	fig, axes = plt.subplots(1,1,figsize=(10,7))
+	fig, axes = plt.subplots(nrows=1,ncols=1,sharex=True,figsize=(12,4))
+	plt.gca().invert_yaxis()
 	plt.errorbar(x,y,yerr=yerr, marker='', drawstyle='steps-mid') 
 	#plt.plot(time_series[flag_time],cnt_series[flag_time],'o-')
 	axes.set_xlabel('Time (sec)');
 	axes.set_ylabel('Count Rate (cps) per single NICER module')
 	axes.set_xlim(xmin,xmax)
-
-	plt.savefig(outpdf)	
+	plt.savefig(outpdf,bbox_inches='tight',transparent=True)	
 
 	cmd = 'open %s' % outpdf
 	print(cmd);os.system(cmd)
@@ -90,13 +90,15 @@ def plot_curve(mkffile,bin,xmin,xmax,ninja_rate):
 	ninja_err_series = np.sqrt(ninja_cnt_series)
 
 	outpdf = outpdf.replace('ni','ninjasim')
-	fig, axes = plt.subplots(1,1,figsize=(10,7))
+	fig, axes = plt.subplots(nrows=1,ncols=1,sharex=True,figsize=(12,4))
+	plt.gca().invert_yaxis()
 	#plt.errorbar(x,ninja_cnt_series,yerr=ninja_err_series, marker='', drawstyle='steps-mid') 
-	plt.plot(x,ninja_cnt_series,marker='',drawstyle='steps-mid')
+	axes.step(x,ninja_cnt_series)
+	#plt.plot(x,ninja_cnt_series,marker='',drawstyle='steps-mid')
 	axes.set_xlabel('Time (sec)');
 	axes.set_ylabel('NinjaSat Count Rate (cps)')
 	axes.set_xlim(xmin,xmax)
-	plt.savefig(outpdf)	
+	plt.savefig(outpdf,bbox_inches='tight',transparent=True)	
 
 	cmd = 'open %s' % outpdf
 	print(cmd);os.system(cmd)
