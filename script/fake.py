@@ -72,7 +72,7 @@ def generate_faked_phafiles(bkg,rmf,exp,xcm,outname,outdir,rebin_sigma=3,rebin_m
 	cmd += "resp 2 %s\n" % rmf	
 	cmd += "ipl ld\n"
 	cmd += "r x 0.7 100\n"
-	cmd += "r y 1e-3 %.1f\n" % ymax
+	cmd += "r y 3e-3 %.1f\n" % ymax
 	cmd += "lwid 5\n"
 	cmd += "lwid 5 on 1..100\n"
 	cmd += "time off\n"
@@ -92,8 +92,8 @@ def generate_faked_phafiles(bkg,rmf,exp,xcm,outname,outdir,rebin_sigma=3,rebin_m
 	cmd += "EOF\n"
 	cmd += "ps2pdf %s.ps\n" % outname
 	cmd += "rm -f %s.ps\n" % outname
-	cmd += "mv %s.* %s" % (outname,outdir)
-	cmd += "mv %s_bkg.* %s" % (outname,outdir)
+	cmd += "mv %s.* %s\n" % (outname,outdir)
+	cmd += "mv %s_bkg.* %s\n" % (outname,outdir)
 	print(cmd);os.system(cmd)
 
 	f = open('%s/%s.xcm' % (outdir,outname),'w')
