@@ -45,7 +45,7 @@ def wget_nicer_mkf(obsid,yyyymm):
 	cmd = 'wget -q -nH --no-check-certificate --cut-dirs=8 -r -l0 -c -N -np -R \'index*\' -erobots=off --retr-symlinks %s;' % mkffile_path
 	print(cmd);os.system(cmd)
 
-def plot_curve(mkffile,bin,xmin,xmax,ninja_rate):
+def plot_curve(mkffile,bin,xmin,xmax,ninja_rate,obsid):
 	"""
 	     62 TOT_XRAY_COUNT             1J
 	"""
@@ -68,7 +68,7 @@ def plot_curve(mkffile,bin,xmin,xmax,ninja_rate):
 
 	outpdf = mkffile.replace('mkf.gz','pdf')
 	fig, axes = plt.subplots(nrows=1,ncols=1,sharex=True,figsize=(12,4))
-	plt.gca().invert_yaxis()
+	#plt.gca().invert_yaxis()
 	plt.errorbar(x,y,yerr=yerr, marker='', drawstyle='steps-mid') 
 	#plt.plot(time_series[flag_time],cnt_series[flag_time],'o-')
 	axes.set_xlabel('Time (sec)');
@@ -91,18 +91,22 @@ def plot_curve(mkffile,bin,xmin,xmax,ninja_rate):
 
 	outpdf = outpdf.replace('ni','ninjasim')
 	fig, axes = plt.subplots(nrows=1,ncols=1,sharex=True,figsize=(12,4))
-	plt.gca().invert_yaxis()
+	#plt.gca().invert_yaxis()
 	#plt.errorbar(x,ninja_cnt_series,yerr=ninja_err_series, marker='', drawstyle='steps-mid') 
-	axes.step(x,ninja_cnt_series)
+	axes.step(x-x[0],ninja_cnt_series)
 	#plt.plot(x,ninja_cnt_series,marker='',drawstyle='steps-mid')
 	axes.set_xlabel('Time (sec)');
 	axes.set_ylabel('NinjaSat Count Rate (cps)')
-	axes.set_xlim(xmin,xmax)
+	axes.set_xlim(xmin-x[0],xmax-x[0])
 	plt.savefig(outpdf,bbox_inches='tight',transparent=True)	
 
 	cmd = 'open %s' % outpdf
 	print(cmd);os.system(cmd)
 
+	cmd = 'mkdir -p out/v201024/ninjasim%s' % obsid
+	print(cmd);os.system(cmd)
+	cmd = 'mv *%s* out/v201024/ninjasim%s' % obsid 
+	print(cmd);os.system(cmd)
 
 def main(args=None):
 	parser = get_parser()
@@ -111,7 +115,7 @@ def main(args=None):
 	mkffile = 'ni%s.mkf.gz' % args.obsid
 	if not os.path.exists(mkffile):
 		wget_nicer_mkf(args.obsid,args.yyyymm)
-	plot_curve(mkffile,args.bin,args.xmin,args.xmax,args.ninja)
+	plot_curve(mkffile,args.bin,args.xmin,args.xmax,args.ninja,args.obsid)
 
 if __name__=="__main__":
 	main()
